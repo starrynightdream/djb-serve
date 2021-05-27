@@ -1,0 +1,9 @@
+<div *ngIf="djb">
+    <h2>{{djb.name}}</h2>
+    <span>day: {{djb.day}}</span>
+
+    <div>
+        <label for="time">设置时间： </label>
+        <input id="time" [(ngModel)]="djb.day" placeholder="djb.day"/>
+    </div>
+</div>

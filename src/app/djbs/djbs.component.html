@@ -8,12 +8,5 @@
         <span class="badge">{{djb.day}}</span> {{djb.name}}
     </li>
 </ul>
-<div *ngIf="selectedDjb">
-    <h2>{{selectedDjb.name}}</h2>
-    <span>day: {{selectedDjb.day}}</span>
 
-    <div>
-        <label for="time">设置时间： </label>
-        <input id="time" [(ngModel)]="selectedDjb.day" placeholder="selectedDjb.day"/>
-    </div>
-</div>
+<app-fast-djb-info [djb]="selectedDjb"></app-fast-djb-info>

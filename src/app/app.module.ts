@@ -6,11 +6,15 @@ import { AppComponent } from './app.component';
 import { DjbsComponent } from './djbs/djbs.component';
 
 import { FormsModule } from '_@angular_forms@12.0.1@@angular/forms';
+import { FastDjbInfoComponent } from './fast-djb-info/fast-djb-info.component';
+import { MessageComponent } from './message/message.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DjbsComponent
+    DjbsComponent,
+    FastDjbInfoComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,

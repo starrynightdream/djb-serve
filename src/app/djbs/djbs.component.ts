@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {djbInfo} from '../djbInfo';
-import { djbs } from '../moce-djb';
+
+import { djbInfo } from '../djbInfo';
+import { DjbService } from '../djb.service';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-djbs',
@@ -10,17 +12,8 @@ import { djbs } from '../moce-djb';
 
 export class DjbsComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
   selectedDjb?: djbInfo;
-
-  onSelect(djb: djbInfo): void{
-    this.selectedDjb = djb;
-  }
-
+  djbs?: djbInfo[];
 
   djbt: djbInfo= {
     day : 123,
@@ -28,6 +21,20 @@ export class DjbsComponent implements OnInit {
     someTip: 'asd',
   }
 
-  djbs = djbs;
+  constructor(private djbService: DjbService, private messageService: MessageService) { }
 
+  ngOnInit(): void {
+    this.getDjbs();
+  }
+
+
+  onSelect(djb: djbInfo): void{
+    this.selectedDjb = djb;
+    this.messageService.add(`选择： if = ${ djb.day }`)
+  }
+
+  getDjbs(): void{
+    this.djbService.getDjbs()
+      .subscribe(djbs => this.djbs = djbs);
+  }
 }
