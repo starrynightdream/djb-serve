@@ -8,13 +8,15 @@ import { DjbsComponent } from './djbs/djbs.component';
 import { FormsModule } from '_@angular_forms@12.0.1@@angular/forms';
 import { FastDjbInfoComponent } from './fast-djb-info/fast-djb-info.component';
 import { MessageComponent } from './message/message.component';
+import { ChardetailComponent } from './chardetail/chardetail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DjbsComponent,
     FastDjbInfoComponent,
-    MessageComponent
+    MessageComponent,
+    ChardetailComponent
   ],
   imports: [
     BrowserModule,

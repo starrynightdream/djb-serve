@@ -12,7 +12,6 @@ import { MessageService } from '../message.service';
 
 export class DjbsComponent implements OnInit {
 
-  selectedDjb?: djbInfo;
   djbs?: djbInfo[];
 
   djbt: djbInfo= {
@@ -25,12 +24,6 @@ export class DjbsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDjbs();
-  }
-
-
-  onSelect(djb: djbInfo): void{
-    this.selectedDjb = djb;
-    this.messageService.add(`选择： if = ${ djb.day }`)
   }
 
   getDjbs(): void{

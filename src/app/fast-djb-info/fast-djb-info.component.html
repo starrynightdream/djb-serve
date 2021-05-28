@@ -1,5 +1,6 @@
 <div *ngIf="djb">
-    <h2>{{djb.name}}</h2>
+
+    <h1>{{djb.name}}</h1>
     <span>day: {{djb.day}}</span>
 
     <div>
@@ -7,3 +8,5 @@
         <input id="time" [(ngModel)]="djb.day" placeholder="djb.day"/>
     </div>
 </div>
+
+<button (click)="goBack()">Back</button>

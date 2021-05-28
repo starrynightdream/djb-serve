@@ -4,9 +4,11 @@
 
 <h2>让我看看谁生日！</h2>
 <ul class="djbs">
-    <li *ngFor="let djb of djbs" (click)="onSelect(djb)" [class.selected]="djb === selectedDjb">
-        <span class="badge">{{djb.day}}</span> {{djb.name}}
+    <li *ngFor="let djb of djbs">
+        <a routerLink="/detail/{{djb.day}}">
+            <span class="badge">{{djb.day}}</span> {{djb.name}}
+        </a>
     </li>
 </ul>
 
-<app-fast-djb-info [djb]="selectedDjb"></app-fast-djb-info>
+<!-- <app-fast-djb-info [djb]="selectedDjb"></app-fast-djb-info> -->
