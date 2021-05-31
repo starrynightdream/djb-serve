@@ -10,6 +10,8 @@ import { FastDjbInfoComponent } from './fast-djb-info/fast-djb-info.component';
 import { MessageComponent } from './message/message.component';
 import { ChardetailComponent } from './chardetail/chardetail.component';
 
+import { HttpClientModule } from '@angular/common/http';;
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +23,8 @@ import { ChardetailComponent } from './chardetail/chardetail.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
