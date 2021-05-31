@@ -1,14 +1,13 @@
-<!-- <h2>{{djbt.name}}</h2>
-<h3>{{djbt.day}}</h3>
-<h2>{{djbt.someTip }} Test</h2> -->
-
-<h2>让我看看谁生日！</h2>
-<ul class="djbs">
-    <li *ngFor="let djb of djbs">
-        <a routerLink="/detail/{{djb.day}}">
-            <span class="badge">{{djb.day}}</span> {{djb.name}}
-        </a>
-    </li>
-</ul>
-
+<div class="djbsBox">
+    <div class="mainImgBox">
+        <img src="{{url}}" class="mainImg"/>
+    </div>
+    <ul class="djbs">
+        <li *ngFor="let djb of djbs">
+            <a routerLink="/detail/{{djb.day}}">
+                <span class="badge">{{djb.day}}</span> {{djb.name}}
+            </a>
+        </li>
+    </ul>
+</div>
 <!-- <app-fast-djb-info [djb]="selectedDjb"></app-fast-djb-info> -->

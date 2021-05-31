@@ -14,7 +14,7 @@ import { HttpClient, HttpHeaders } from '_@angular_common@12.0.1@@angular/common
 
 
 export class DjbService {
-  private djbsUrl = '';
+  private djbsUrl = 'http://localhost:3333';
 
   private httpOptions = {
     headers: new HttpHeaders({
@@ -25,6 +25,10 @@ export class DjbService {
   constructor(
     private http: HttpClient,
     private messageService: MessageService) { }
+  
+  getUrl(): string{
+    return this.djbsUrl;
+  }
 
   getDjbs(): Observable<djbInfo[]>{
     this.log('生日信息获取！');

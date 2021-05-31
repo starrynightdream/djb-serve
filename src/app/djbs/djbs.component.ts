@@ -18,6 +18,8 @@ export class DjbsComponent implements OnInit {
   djbs?: djbInfo[];
   djbs$!: Observable<djbInfo[]>;
 
+  url?:string;
+
   private searchTerms = new Subject<string>();
 
   djbt: djbInfo= {
@@ -26,7 +28,10 @@ export class DjbsComponent implements OnInit {
     someTip: 'asd',
   }
 
-  constructor(private djbService: DjbService, private messageService: MessageService) { }
+  constructor(private djbService: DjbService, private messageService: MessageService) { 
+    const url = djbService.getUrl();
+    this.url = `${url}/imgSet/bg.jpg`;
+  }
 
   ngOnInit(): void {
     this.getDjbs();
