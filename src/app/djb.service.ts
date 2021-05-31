@@ -16,6 +16,12 @@ import { HttpClient, HttpHeaders } from '_@angular_common@12.0.1@@angular/common
 export class DjbService {
   private djbsUrl = '';
 
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type' : 'application/json'
+    })
+  }
+
   constructor(
     private http: HttpClient,
     private messageService: MessageService) { }
@@ -37,7 +43,42 @@ export class DjbService {
       .pipe(
         tap(_=>{this.log(`查找信息关于: day=${day}`)}),
         // bug: 类型不匹配
-        catchError(this.handleError<djbInfo>(`getDjb day=${day}`, {}))
+        catchError(this.handleError<djbInfo>(`getDjb day=${day}`))
+      )
+  }
+
+  addDjb(djb: djbInfo): Observable<djbInfo>{
+
+    return this.http.post<djbInfo>(this.djbsUrl, djb, this.httpOptions)
+      .pipe(
+        tap((newDjb)=>{this.log(`add one day = ${newDjb.day}`)}),
+        catchError(this.handleError<djbInfo>('add djb'))
+      );
+  }
+
+  deleteDjb(day: number): Observable<djbInfo>{
+    const url = `${this.djbsUrl}/${day}`;
+
+    return this.http.delete<djbInfo>(url, this.httpOptions)
+      .pipe(
+        tap(_=> this.log(`delete djb day=${day}`)),
+        catchError(this.handleError<djbInfo>('delete djb'))
+      )
+  }
+
+  updateDjb(djb: djbInfo): Observable<any>{
+    return this.http.put(this.djbsUrl, djb, this.httpOptions)
+      .pipe(
+        tap(_=>this.log(`updated hero id = ${djb.day}`)),
+        catchError(this.handleError<any>('updateDjb'))
+      )
+  }
+
+  searchDjb(char: string): Observable<djbInfo[]>{
+    const url = `${this.djbsUrl}/${char}`
+    return this.http.get<djbInfo[]>(url, this.httpOptions)
+      .pipe(
+        catchError(this.handleError<djbInfo[]>(`search`))
       )
   }
 
@@ -45,7 +86,7 @@ export class DjbService {
     this.messageService.add(`djb service: ${message}`);
   }
 
-  private handleError<T>(operation = 'operation', result: T){
+  private handleError<T>(operation = 'operation', result: T|null = null){
     return (err: any): Observable<T> =>{
       console.error(err);
 

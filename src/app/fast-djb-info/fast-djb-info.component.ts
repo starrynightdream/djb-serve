@@ -37,4 +37,10 @@ export class FastDjbInfoComponent implements OnInit {
   goBack(): void{
     this.location.back();
   }
+
+  save(): void{
+    // 书写保存代码
+    if (this.djb){
+    }
+  }
 }

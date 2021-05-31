@@ -4,6 +4,9 @@ import { djbInfo } from '../djbInfo';
 import { DjbService } from '../djb.service';
 import { MessageService } from '../message.service';
 
+import { Observable, Subject } from '_rxjs@6.6.7@rxjs';
+import { debounceTime, distinctUntilChanged, switchMap } from '_rxjs@6.6.7@rxjs/operators';
+
 @Component({
   selector: 'app-djbs',
   templateUrl: './djbs.component.html',
@@ -13,6 +16,9 @@ import { MessageService } from '../message.service';
 export class DjbsComponent implements OnInit {
 
   djbs?: djbInfo[];
+  djbs$!: Observable<djbInfo[]>;
+
+  private searchTerms = new Subject<string>();
 
   djbt: djbInfo= {
     day : 123,
@@ -29,5 +35,15 @@ export class DjbsComponent implements OnInit {
   getDjbs(): void{
     this.djbService.getDjbs()
       .subscribe(djbs => this.djbs = djbs);
+  }
+
+  search(term: string): void{
+    this.searchTerms.next(term);
+
+    this.djbs$ = this.searchTerms.pipe(
+      debounceTime(300),
+      distinctUntilChanged(),
+      switchMap((term: string)=> this.djbService.searchDjb(term))
+    );
   }
 }
