@@ -8,7 +8,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "mystart": "ng serve --port 3000 -o | node ./dataBackServe/app.js"
+    "mystart": "node ./dataBackServe/app.js | ng serve --port 3000 -o"
   },
   "private": true,
   "dependencies": {
