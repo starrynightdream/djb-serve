@@ -41,3 +41,31 @@
   opacity: 0.7;
   font-size: 13vw;
 }
+
+.djbs{
+  background-color: rgb(182, 161, 46);
+  display: flex;
+  display: -webkit-flex;
+
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.djbs .djbItem{
+  width: 22vw;
+  height: 30vw;
+
+  display: flex;
+  display: -webkit-flex;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+}
+
+.djbs .djbItem img{
+  height: 90%;
+}

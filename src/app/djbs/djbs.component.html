@@ -1,16 +1,18 @@
 <div class="djbBox">
     <div class="mainImgBox">
-        <img src="{{url}}" class="mainImg"/>
+        <img src="{{url+'bg.jpg'}}" class="mainImg"/>
     </div>
     <div class="titleBox">
         <span class="mainTitle">生日快乐</span>
     </div>
-    <ul class="djbs">
-        <li *ngFor="let djb of djbs">
-            <a routerLink="/detail/{{djb.day}}">
+    <div class="djbs">
+        <div *ngFor="let djb of djbs" class="djbItem">
+            <!-- <a routerLink="/detail/{{djb.day}}"> -->
+            <img src="{{url}}/{{djb.img}}"/>
+            
                 <span class="badge">{{djb.day}}</span> {{djb.name}}
-            </a>
-        </li>
-    </ul>
+            <!-- </a> -->
+        </div>
+    </div>
 </div>
 <!-- <app-fast-djb-info [djb]="selectedDjb"></app-fast-djb-info> -->

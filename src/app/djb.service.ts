@@ -33,7 +33,9 @@ export class DjbService {
   getDjbs(): Observable<djbInfo[]>{
     this.log('生日信息获取！');
     // return of(djbs);
-    return this.http.get<djbInfo[]>(this.djbsUrl)
+
+    const url = `${this.djbsUrl}/djbs`;
+    return this.http.get<djbInfo[]>(url, this.httpOptions)
       .pipe(
         catchError(this.handleError('getDjbs', []))
       );

@@ -22,15 +22,9 @@ export class DjbsComponent implements OnInit {
 
   private searchTerms = new Subject<string>();
 
-  djbt: djbInfo= {
-    day : 123,
-    name: '兽耳娘',
-    someTip: 'asd',
-  }
-
   constructor(private djbService: DjbService, private messageService: MessageService) { 
     const url = djbService.getUrl();
-    this.url = `${url}/imgSet/bg.jpg`;
+    this.url = `${url}/imgSet/`;
   }
 
   ngOnInit(): void {
@@ -39,7 +33,10 @@ export class DjbsComponent implements OnInit {
 
   getDjbs(): void{
     this.djbService.getDjbs()
-      .subscribe(djbs => this.djbs = djbs);
+      .subscribe(djbs => {
+        this.djbs = djbs;
+        console.log(this.djbs)
+      });
   }
 
   search(term: string): void{

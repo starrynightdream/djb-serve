@@ -1,5 +1,6 @@
 export interface djbInfo{
     day: number;
-    name: String;
-    someTip: String;
+    name: string;
+    someTip?: string;
+    img?: string;
 }
